@@ -1,0 +1,14 @@
+import commands
+srt=commands.getoutput("ifconfig eth0| sed -n '3,$p'")
+srt1=srt.split()
+i=0
+while i<len(srt1):
+    print((srt1[i],srt1[i+1]))
+    i=i+17
+
+import re
+
+srt=commands.getoutput("ifconfig eth0| sed -n '7p'")
+pattern = re.compile(ur'(?<=dropped).*?(?=overruns)')
+result1 = pattern.findall(srt)
+print result1
